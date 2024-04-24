@@ -1,0 +1,41 @@
+.statContainer {
+    display: flex;
+    flex-direction: row;
+}
+.titleBox{
+    display: flex;
+    flex-direction: column;
+}
+
+.stat {
+    display: flex;
+    margin-right: 1rem;
+    margin-top: 2rem;
+    background-color: darkgreen;
+    height: 8rem;
+    width: 25%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+}
+
+.icon {
+    position: relative;
+    right: 1rem;
+    font-size: 1.5rem;
+}
+
+.statBox {
+    position: relative;
+    right: 4rem;
+    display: flex;
+
+}
+
+.statTitle{
+    font-size: 0.8rem;
+}
+
+.statVal {
+    font-size: 2rem;
+}

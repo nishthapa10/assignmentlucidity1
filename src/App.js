@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { useSelector, useDispatch } from 'react-redux'
+import { useState } from 'react'
+
+import { Stats } from './Stats'
+import { Header } from './Header'
+import { PricingTable } from './PricingTable'
+import { useEffect } from 'react'
+import { fetchData } from './Store/action'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [slide, setSlide] = useState(false)
+
+    const stats = useSelector((state) => state?.stats?.stats)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        getStats()
+    }, [dispatch])
+
+    const getStats = () => {
+        dispatch(fetchData())
+    }
+    const onToggleSliderClick = (e) => {
+        setSlide(!slide)
+    }
+    return (
+        <div className='App'>
+            <Header onToggleSliderClick={onToggleSliderClick} slide={slide} />
+            <Stats />
+            <PricingTable stats={stats} slide={slide} />
+        </div>
+    )
 }
 
-export default App;
+export default App
